@@ -1,61 +1,296 @@
-# CodeIgniter 4 Framework
+## 📄 **پروژه SnapPDF**
 
-## What is CodeIgniter?
+```markdown
+# 📄 SnapPDF - تبدیل آنلاین تصاویر به PDF
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+[![PHP](https://img.shields.io/badge/PHP-8.1%2B-blue.svg)](https://php.net)
+[![CodeIgniter](https://img.shields.io/badge/CodeIgniter-4.7.3-red.svg)](https://codeigniter.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## 📌 معرفی پروژه
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+**SnapPDF** یک پلتفرم تحت وب برای تبدیل سریع و آسان تصاویر به فایل PDF است. کاربران می‌توانند تصاویر خود را آپلود کرده، اولویت‌بندی (مرتب‌سازی) کنند و در نهایت یک فایل PDF با کیفیت بالا دریافت نمایند. تمام فایل‌ها پس از ۲ دقیقه به‌صورت خودکار از سرور حذف می‌شوند.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### ✨ ویژگی‌های اصلی
 
-## Important Change with index.php
+- 🔐 **احراز هویت امن** با شماره تلفن و کد یکبارمصرف (OTP) از طریق سرویس **بله**
+- 📤 **آپلود تصاویر** با کشیدن و رها کردن (Drag & Drop)
+- 🔄 **اولویت‌بندی تصاویر** با قابلیت کشیدن و جابجایی (Sortable)
+- 📄 **تبدیل به PDF** با کیفیت بالا
+- ⏱️ **حذف خودکار فایل‌ها** پس از ۲ دقیقه
+- 📱 **طراحی کاملاً ریسپانسیو** (موبایل-فرست)
+- 🎨 **رابط کاربری مدرن و مینیمال**
+- 📊 **تاریخچه تبدیل‌ها** و آمار کاربری
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+---
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## 🛠️ تکنولوژی‌های استفاده شده
 
-**Please** read the user guide for a better explanation of how CI4 works!
+| بخش | تکنولوژی |
+|-----|----------|
+| **Backend** | PHP 8.1+ / CodeIgniter 4.7.3 |
+| **Database** | MySQL / MariaDB |
+| **Frontend** | HTML5, CSS3, TailwindCSS, JavaScript |
+| **Drag & Drop** | SortableJS |
+| **PDF Generator** | Dompdf |
+| **SMS Service** | بله (Bale) - سرویس سفیر |
+| **Icons** | Material Symbols |
 
-## Repository Management
+---
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+## 📁 ساختار پروژه
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+```
+snappdf/
+├── app/
+│   ├── Config/              # تنظیمات اصلی
+│   │   ├── App.php
+│   │   ├── Database.php
+│   │   └── Routes.php       # مسیرها
+│   ├── Controllers/
+│   │   ├── Auth.php         # احراز هویت
+│   │   ├── Dashboard.php    # داشبورد و تبدیل
+│   │   ├── Profile.php      # پروفایل کاربری
+│   │   └── Home.php         # صفحه اصلی
+│   ├── Models/
+│   │   ├── UserModel.php
+│   │   ├── OtpLogModel.php
+│   │   ├── ConversionModel.php
+│   │   └── TempFileModel.php
+│   ├── Libraries/
+│   │   ├── SmsService.php   # سرویس بله
+│   │   └── PdfGenerator.php # تولید PDF
+│   ├── Filters/
+│   │   └── Auth.php         # فیلتر احراز هویت
+│   └── Views/               # قالب‌ها
+│       ├── auth/
+│       │   ├── login.php
+│       │   ├── register.php
+│       │   ├── verify_phone.php
+│       │   └── reset_password.php
+│       ├── dashboard.php
+│       ├── profile.php
+│       └── dashboard/
+│           ├── history.php
+│           └── pdf_ready.php
+├── public/
+│   ├── .htaccess
+│   └── index.php
+├── writable/
+│   └── uploads/             # فایل‌های موقت و PDF
+│       ├── temp/
+│       └── pdf/
+├── .env.example
+└── README.md
+```
 
-## Contributing
+---
 
-We welcome contributions from the community.
+## 🚀 نصب و راه‌اندازی
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+### 1️⃣ پیش‌نیازها
 
-## Server Requirements
+- PHP 8.1 یا بالاتر
+- MySQL 5.7 یا بالاتر
+- Composer
+- Web Server (Apache / Nginx)
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+### 2️⃣ کلون کردن پروژه
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+```bash
+git clone https://github.com/yourusername/snappdf.git
+cd snappdf
+```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+### 3️⃣ نصب وابستگی‌ها
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+```bash
+composer install
+```
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+### 4️⃣ تنظیمات محیطی
+
+```bash
+cp .env.example .env
+```
+
+فایل `.env` را ویرایش کنید:
+
+```env
+# Database
+database.default.hostname = localhost
+database.default.database = snappdf_db
+database.default.username = root
+database.default.password = 
+
+# Base URL
+app.baseURL = 'http://localhost/snappdf/'
+
+# Bale SMS Service
+BALE_API_KEY = your_api_key
+BALE_BOT_ID = your_bot_id
+```
+
+### 5️⃣ ایجاد دیتابیس
+
+```sql
+CREATE DATABASE IF NOT EXISTS snappdf_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+سپس جداول را ایجاد کنید (فایل `database.sql` در ریشه پروژه موجود است).
+
+### 6️⃣ تنظیم دسترسی‌ها
+
+```bash
+chmod -R 777 writable/uploads/
+```
+
+### 7️⃣ اجرای پروژه
+
+#### با PHP Built-in Server:
+
+```bash
+php spark serve
+```
+
+#### با Apache/XAMPP/Mamp:
+
+پروژه را در `htdocs` قرار دهید و از آدرس زیر باز کنید:
+
+```
+http://localhost/snappdf/public/
+```
+
+---
+
+## 📊 دیتابیس
+
+### جداول اصلی
+
+| جدول | توضیح |
+|------|-------|
+| `users` | اطلاعات کاربران |
+| `otp_logs` | لاگ‌های کد یکبارمصرف |
+| `temp_files` | فایل‌های موقت آپلود شده |
+| `conversions` | تاریخچه تبدیل‌ها |
+| `failed_attempts` | تلاش‌های ناموفق |
+
+---
+
+## 🔐 احراز هویت
+
+### جریان ثبت‌نام
+
+1. کاربر شماره تلفن را وارد می‌کند
+2. کد OTP به شماره ارسال می‌شود (سرویس بله)
+3. کاربر کد را تأیید می‌کند
+4. اطلاعات تکمیلی (نام، رمز عبور) ثبت می‌شود
+5. ورود خودکار به سیستم
+
+### جریان ورود
+
+1. کاربر شماره تلفن و رمز عبور را وارد می‌کند
+2. بررسی اعتبار اطلاعات
+3. اگر شماره تأیید نشده باشد، کد OTP ارسال می‌شود
+4. ورود موفق به داشبورد
+
+---
+
+## 📤 تبدیل تصاویر به PDF
+
+### مراحل تبدیل
+
+1. **آپلود**: کشیدن یا انتخاب تصاویر (JPG, PNG, WEBP, BMP, TIFF)
+2. **مرتب‌سازی**: جابجایی تصاویر با کشیدن یا دکمه‌های بالا/پایین
+3. **تنظیمات**: نام فایل، فشرده‌سازی، شماره صفحات
+4. **تبدیل**: کلیک روی دکمه تبدیل
+5. **دانلود**: دریافت فایل PDF
+6. **حذف خودکار**: فایل پس از ۲ دقیقه حذف می‌شود
+
+### میانبرهای صفحه کلید
+
+| کلید ترکیبی | عملکرد |
+|------------|---------|
+| `Ctrl+Z` | بازگردانی (Undo) |
+| `Ctrl+Y` | جلو رفتن (Redo) |
+
+---
+
+## 📱 پاسخگویی (Responsive)
+
+پروژه به‌صورت کامل برای دستگاه‌های مختلف بهینه‌سازی شده است:
+
+| دستگاه | Breakpoint |
+|--------|------------|
+| **موبایل** | < 768px |
+| **تبلت** | 768px - 1024px |
+| **دسکتاپ** | > 1024px |
+
+---
+
+## 🔧 عیب‌یابی (Troubleshooting)
+
+### خطای `setBind(): Argument #1 ($key) must be of type string`
+
+این خطا مربوط به مدل‌هاست. مطمئن شوید که در متدهای `insert` و `update` از آرایه‌هایی با **کلیدهای رشته‌ای** استفاده می‌کنید.
+
+### خطای 404 برای مسیرها
+
+1. فایل `public/.htaccess` را بررسی کنید
+2. مطمئن شوید `baseURL` در `app/Config/App.php` درست تنظیم شده است
+3. با دستور `php spark routes` مسیرها را بررسی کنید
+
+### پیامک ارسال نمی‌شود
+
+1. کلید API و Bot ID را بررسی کنید
+2. مطمئن شوید سرویس بله فعال است
+3. فایل لاگ `writable/logs/` را بررسی کنید
+
+---
+
+## 📸 تصاویر پروژه
+
+صفحه ورودی پروژه با طراحی جذاب و معرفی امکانات.
+
+
+### صفحه داشبورد
+
+![Dashboard](snapshot/pic2.jpg)
+
+### صفحه ورود
+
+![Register](snapshot/pic1.jpg)
+
+
+---
+
+## 📝 مجوز
+
+این پروژه تحت مجوز **MIT** منتشر شده است. برای اطلاعات بیشتر فایل `LICENSE` را مشاهده کنید.
+
+---
+
+## 👨‍💻 توسعه‌دهنده
+
+- **نام**: تیم توسعه SnapPDF
+- **ایمیل**: support@snappdf.com
+- **وب‌سایت**: [https://snappdf.com](https://snappdf.com)
+
+---
+
+## ⭐ حمایت
+
+اگر پروژه برای شما مفید بود، لطفاً به آن **Star** دهید ⭐
+
+---
+
+## 📞 تماس
+
+- **وب‌سایت**: [https://snappdf.com](https://snappdf.com)
+- **ایمیل پشتیبانی**: support@snappdf.com
+- **تلگرام**: [@snappdf](https://t.me/snappdf)
+
+---
+
+**SnapPDF** - تبدیل سریع و امن تصاویر به PDF 🚀
+```

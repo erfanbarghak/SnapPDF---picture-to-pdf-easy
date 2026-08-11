@@ -1,9 +1,0 @@
-CRITICAL - 2026-07-01 08:30:07 --> ArgumentCountError: Too few arguments to function App\Controllers\Dashboard::deleteConversion(), 0 passed in /home/rqakir/snappdf/system/CodeIgniter.php on line 974 and exactly 1 expected
-[Method: POST, Route: dashboard/delete-conversion/11]
-in APPPATH/Controllers/Dashboard.php on line 197.
- 1 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\Dashboard->deleteConversion()
- 2 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
- 3 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
- 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
- 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
- 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
