@@ -38,54 +38,6 @@
 
 ---
 
-## 📁 ساختار پروژه
-
-```
-snappdf/
-├── app/
-│   ├── Config/              # تنظیمات اصلی
-│   │   ├── App.php
-│   │   ├── Database.php
-│   │   └── Routes.php       # مسیرها
-│   ├── Controllers/
-│   │   ├── Auth.php         # احراز هویت
-│   │   ├── Dashboard.php    # داشبورد و تبدیل
-│   │   ├── Profile.php      # پروفایل کاربری
-│   │   └── Home.php         # صفحه اصلی
-│   ├── Models/
-│   │   ├── UserModel.php
-│   │   ├── OtpLogModel.php
-│   │   ├── ConversionModel.php
-│   │   └── TempFileModel.php
-│   ├── Libraries/
-│   │   ├── SmsService.php   # سرویس بله
-│   │   └── PdfGenerator.php # تولید PDF
-│   ├── Filters/
-│   │   └── Auth.php         # فیلتر احراز هویت
-│   └── Views/               # قالب‌ها
-│       ├── auth/
-│       │   ├── login.php
-│       │   ├── register.php
-│       │   ├── verify_phone.php
-│       │   └── reset_password.php
-│       ├── dashboard.php
-│       ├── profile.php
-│       └── dashboard/
-│           ├── history.php
-│           └── pdf_ready.php
-├── public/
-│   ├── .htaccess
-│   └── index.php
-├── writable/
-│   └── uploads/             # فایل‌های موقت و PDF
-│       ├── temp/
-│       └── pdf/
-├── .env.example
-└── README.md
-```
-
----
-
 ## 🚀 نصب و راه‌اندازی
 
 ### 1️⃣ پیش‌نیازها
