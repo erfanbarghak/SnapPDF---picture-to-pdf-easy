@@ -1,0 +1,43 @@
+# ============================================
+# .htaccess - ریشه پروژه
+# برای لایت‌اسپید
+# ============================================
+
+RewriteEngine On
+
+# Redirect to public folder
+RewriteRule ^$ public/ [L]
+RewriteRule (.*) public/$1 [L]
+
+# اگر فایل وجود دارد، مستقیم نمایش بده
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^public/(.*)$ $1 [L]
+
+# اگر پوشه وجود دارد، مستقیم نمایش بده
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^public/(.*)$ $1 [L]
+
+# ============================================
+# دسترسی به sitemap.xml
+# ============================================
+
+<Files "sitemap.xml">
+    Require all granted
+</Files>
+
+# Redirect sitemap.xml to controller
+RewriteRule ^sitemap\.xml$ index.php/sitemap.xml [L]
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php8_module>
+   php_value error_log "/home/rqakir/logs/php.error.log"
+   php_flag log_errors On
+</IfModule>
+<IfModule lsapi_module>
+   php_value error_log "/home/rqakir/logs/php.error.log"
+   php_flag log_errors On
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
