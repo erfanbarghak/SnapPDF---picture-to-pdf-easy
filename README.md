@@ -222,14 +222,6 @@ http://localhost/snappdf/public/
 
 ---
 
-## 👨‍💻 توسعه‌دهنده
-
-- **نام**: تیم توسعه SnapPDF
-- **ایمیل**: support@snappdf.com
-- **وب‌سایت**: [https://snappdf.com](https://snappdf.com)
-
----
-
 ## ⭐ حمایت
 
 اگر پروژه برای شما مفید بود، لطفاً به آن **Star** دهید ⭐
@@ -238,9 +230,9 @@ http://localhost/snappdf/public/
 
 ## 📞 تماس
 
-- **وب‌سایت**: [https://snappdf.com](https://snappdf.com)
-- **ایمیل پشتیبانی**: support@snappdf.com
-- **تلگرام**: [@snappdf](https://t.me/snappdf)
+- **وب‌سایت**: [https://snappdf.com](https://ebarqak.ir)
+- **ایمیل پشتیبانی**: erfanerebus@gmail.com
+- **تلگرام**: [@snappdf](https://t.me/erfanerebus)
 
 ---
 
