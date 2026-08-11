@@ -237,4 +237,3 @@ http://localhost/snappdf/public/
 ---
 
 **SnapPDF** - تبدیل سریع و امن تصاویر به PDF 🚀
-```
